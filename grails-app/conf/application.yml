@@ -117,7 +117,9 @@ environments:
     production:
         dataSource:
             dbCreate: none
-            url: jdbc:mysql://localhost:3306/mojobs
+            url: jdbc:mysql://10.66.119.157:3306/mojobs
+            username: paydb
+            password: hupan12345^
             properties:
                 jmxEnabled: true
                 initialSize: 5

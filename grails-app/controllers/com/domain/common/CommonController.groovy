@@ -22,3 +22,8 @@ interface AddressConstants {
     Long JIANG_SU = 320000
     List<Long> USER_AREA = [SHANG_HAI, ZHE_JIANG, JIANG_SU]
 }
+
+class JobSearchData {
+    String jobName
+    String location
+}

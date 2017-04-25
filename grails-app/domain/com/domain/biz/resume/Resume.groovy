@@ -1,10 +1,12 @@
 package com.domain.biz.resume
 
+import com.mojobs.ResumeType
+
 class Resume {
     BasicInformation basicInformation
     PersonalInformation personalInformation
     CareerPreference careerPreference
-
+    ResumeType resumeType
     static hasMany = [
             workExperiences   : WorkExperience,
             educations        : Education,
@@ -19,6 +21,7 @@ class Resume {
         basicInformation nullable: false
         personalInformation nullable: false
         careerPreference nullable: false
+        resumeType nullable: false, default: ResumeType.Resume
         workExperiences nullable: false
         educations nullable: false
         languages nullable: true

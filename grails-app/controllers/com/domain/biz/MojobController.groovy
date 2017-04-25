@@ -2,6 +2,7 @@ package com.domain.biz
 
 import com.domain.common.Address
 import com.domain.common.AddressConstants
+import com.domain.common.JobSearchData
 import com.mojobs.Category
 import com.mojobs.Style
 
@@ -20,8 +21,9 @@ class MojobController {
         respond Mojob.list(params), model: [mojobCount: Mojob.count()]
     }
 
-    def search() {
-
+    def search(JobSearchData jobSearchData) {
+        println(jobSearchData.jobName)
+        respond Mojob.list(params), model: [mojobCount: Mojob.count(), jobSearchData: jobSearchData]
     }
 
     def show(Mojob mojob) {

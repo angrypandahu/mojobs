@@ -39,6 +39,7 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
         [pattern: '/register/**', access: ['permitAll']],
         [pattern: '/user/**', access: 'isAuthenticated()'],
         [pattern: '/mojob/**', access: 'isAuthenticated()'],
+        [pattern: '/resume/**', access: 'isAuthenticated()'],
         [pattern: '/address/**', access: 'isAuthenticated()'],
         [pattern: '/addressDictionary/**', access: 'isAuthenticated()'],
         [pattern: '/role/**', access: 'isAuthenticated()'],
@@ -58,3 +59,10 @@ grails.gorm.default.mapping = {
     version true
     autoTimestamp true
 }
+grails.plugin.springsecurity.secureChannel.useHeaderCheckChannelSecurity = true
+grails.plugin.springsecurity.secureChannel.secureHeaderName = 'X-Forwarded-Proto'
+grails.plugin.springsecurity.secureChannel.secureHeaderValue = 'http'
+grails.plugin.springsecurity.secureChannel.insecureHeaderName = 'X-Forwarded-Proto'
+grails.plugin.springsecurity.secureChannel.insecureHeaderValue = 'https'
+
+grails.resources.pattern = '/**'

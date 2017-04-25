@@ -12,7 +12,7 @@
 
 </head>
 
-<body class="templatemo-bg-gray">
+<body class="templatemo-bg-gray" style="background-image: url('/assets/bg.jpg')">
 <h1 class="margin-bottom-15">Create Account</h1>
 
 <div class="container">
