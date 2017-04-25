@@ -17,7 +17,10 @@
         <h1 class="margin-bottom-15">Password Reset</h1>
         <g:if test='${emailSent}'>
             <br/>
-            <g:message code='spring.security.ui.forgotPassword.sent'/>
+
+            <div class="alert alert-success" role="alert">
+                <g:message code='spring.security.ui.forgotPassword.sent'/>
+            </div>
         </g:if>
         <g:else>
             <form class="form-horizontal templatemo-forgot-password-form templatemo-container" role="form"
@@ -35,12 +38,14 @@
                     </div>
                 </div>
                 <g:hasErrors bean="${this.forgotPasswordCommand}">
-                    <ul class="errors" role="alert">
-                        <g:eachError bean="${this.forgotPasswordCommand}" var="error">
-                            <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message
-                                    error="${error}"/></li>
-                        </g:eachError>
-                    </ul>
+                    <div class="alert alert-danger alert-dismissible">
+                        <ul class="errors" role="alert">
+                            <g:eachError bean="${this.forgotPasswordCommand}" var="error">
+                                <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message
+                                        error="${error}"/></li>
+                            </g:eachError>
+                        </ul>
+                    </div>
                 </g:hasErrors>
                 <div class="form-group">
                     <div class="col-md-12">

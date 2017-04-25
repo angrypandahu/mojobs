@@ -38,8 +38,11 @@
                         </label>
                         <input type="password" class="form-control" id="password" placeholder="Password"
                                name="${passwordParameter ?: 'password'}">
+
                         <g:if test='${flash.message}'>
-                            ${flash.message}
+                            <div class="alert alert-danger alert-dismissible">
+                                ${flash.message}
+                            </div>
                         </g:if>
                     </div>
 

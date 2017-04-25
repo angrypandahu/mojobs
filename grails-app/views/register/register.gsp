@@ -12,21 +12,28 @@
 
 </head>
 
-<body class="templatemo-bg-gray" style="background-image: url('/assets/bg.jpg')">
+<body class="templatemo-bg-gray">
 <h1 class="margin-bottom-15">Create Account</h1>
 
 <div class="container">
-    <div class="col-md-12">
+    <div class="col-md-6" style="background-image: url('/assets/bg.jpg');height: 347px"></div>
+
+    <div class="col-md-6">
         <form class="form-horizontal templatemo-create-account templatemo-container" role="form"
               action="/register/register" method="post">
+
             <g:hasErrors bean="${this.registerCommand}">
-                <ul class="errors" role="alert">
-                    <g:eachError bean="${this.registerCommand}" var="error">
-                        <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message
-                                error="${error}"/></li>
-                    </g:eachError>
-                </ul>
+                <div class="alert alert-danger alert-dismissible">
+                    <ul class="errors" role="alert">
+                        <g:eachError bean="${this.registerCommand}" var="error">
+                            <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message
+                                    error="${error}"/></li>
+                        </g:eachError>
+                    </ul>
+                </div>
             </g:hasErrors>
+
+
             <div class="form-inner">
                 %{--<div class="form-group">--}%
                 %{--<div class="col-md-6">--}%

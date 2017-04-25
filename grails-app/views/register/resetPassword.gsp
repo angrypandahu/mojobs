@@ -21,12 +21,14 @@
               action="/register/resetPassword" method="post">
             <g:hiddenField name='t' value='${token}'/>
             <g:hasErrors bean="${this.resetPasswordCommand}">
-                <ul class="errors" role="alert">
-                    <g:eachError bean="${this.resetPasswordCommand}" var="error">
-                        <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message
-                                error="${error}"/></li>
-                    </g:eachError>
-                </ul>
+                <div class="alert alert-danger alert-dismissible">
+                    <ul class="errors" role="alert">
+                        <g:eachError bean="${this.resetPasswordCommand}" var="error">
+                            <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message
+                                    error="${error}"/></li>
+                        </g:eachError>
+                    </ul>
+                </div>
             </g:hasErrors>
             <div class="form-inner">
                 %{--<div class="form-group">--}%
