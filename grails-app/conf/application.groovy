@@ -21,7 +21,8 @@ grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.domain.auth.U
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.domain.auth.UserRole'
 grails.plugin.springsecurity.authority.className = 'com.domain.auth.Role'
 grails.plugin.springsecurity.logout.postOnly = false// allows logout to work
-
+grails.plugin.springsecurity.useSwitchUserFilter = true
+grails.plugin.springsecurity.successHandler.defaultTargetUrl = "/user/home"
 // Added by the Spring Security Core plugin:
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.domain.auth.User'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.domain.auth.UserRole'
@@ -43,6 +44,7 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
         [pattern: '/address/**', access: 'isAuthenticated()'],
         [pattern: '/addressDictionary/**', access: 'isAuthenticated()'],
         [pattern: '/role/**', access: 'isAuthenticated()'],
+        [pattern: '/login/impersonate', access: ['ROLE_SWITCH_USER', 'isFullyAuthenticated()']],
         [pattern: '/**/favicon.ico', access: ['permitAll']]
 ]
 

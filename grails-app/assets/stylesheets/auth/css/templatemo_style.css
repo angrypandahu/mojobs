@@ -544,3 +544,14 @@ h2 {
         margin-left: 30px;
     }
 }
+
+.logo_container {
+    background: url('../images/linkedin.png') scroll no-repeat top center transparent;
+    margin-top: 0px;
+    margin-bottom: 25px;
+    text-indent: -119988px;
+    overflow: hidden;
+    text-align: left;
+    height: 59px;
+    width: 375px;
+}

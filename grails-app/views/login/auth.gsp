@@ -10,9 +10,9 @@
     <asset:stylesheet href="/auth/css/bootstrap-theme.min.css"/>
     <asset:stylesheet href="/auth/css/templatemo_style.css"/>
 
-</head>
 
 <body class="templatemo-bg-gray">
+
 <div class="container">
     <div class="col-md-12">
         <h1 class="margin-bottom-15">Sign-In</h1>
@@ -20,6 +20,7 @@
         <form class="form-horizontal templatemo-container templatemo-login-form-1 margin-bottom-30" role="form"
               id="loginForm" name="loginForm"
               action="${postUrl ?: '/login/authenticate'}" method="POST">
+
             <div class="form-group">
                 <div class="col-xs-12">
                     <div class="control-wrapper">
@@ -68,7 +69,7 @@
                 </div>
 
             </div>
-            <hr>
+            %{--<hr>--}%
             %{--<div class="form-group">--}%
             %{--<div class="col-md-12">--}%
             %{--<label>Login with: </label>--}%

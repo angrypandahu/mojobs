@@ -27,3 +27,7 @@ class JobSearchData {
     String jobName
     String location
 }
+
+class BaseInfo {
+    String img
+}
