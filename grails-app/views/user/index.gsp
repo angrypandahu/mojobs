@@ -9,15 +9,21 @@
 <body>
 
 <div id="list-user" class="content scaffold-list" role="main">
-    <h6><g:message code="default.list.label" args="[entityName]"/></h6>
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
-    <f:table collection="${userList}" properties="['id', 'username', 'email']"/>
+    <div class="panel panel-primary">
+        <div class="panel-heading"><g:message code="default.list.label" args="[entityName]"/></div>
+        <f:table collection="${userList}" properties="['id', 'username', 'email']"/>
+        <div class="panel-footer">
+            <ul class="pagination">
+                <boots:paginate total="${userCount}"/>
+            </ul>
+        </div>
+    </div>
+
     <div>
-        <ul class="pagination">
-            <boots:paginate total="${userCount}" />
-        </ul>
+
     </div>
 </div>
 </body>

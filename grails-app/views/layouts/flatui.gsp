@@ -10,7 +10,7 @@
 
     <!-- Loading Bootstrap -->
     <asset:stylesheet href="flatui/dist/css/vendor/bootstrap/css/bootstrap.min.css"/>
-    <asset:stylesheet href="flatui/dist/css/flat-ui.css"/>
+    <asset:stylesheet href="flatui/dist/css/site.min.css"/>
     <asset:stylesheet href="flatui/dist/img/favicon.ico"/>
 
 
@@ -56,7 +56,7 @@ body {
             <sec:ifLoggedIn>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="${baseInfo.img}"
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="${baseInfo?.img}"
                                                                                         class="img-circle"
                                                                                         style="height: 32px"> <b
                                 class="caret"></b></a>
