@@ -9,16 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
     <!-- Loading Bootstrap -->
-    <asset:stylesheet href="flatui/dist/css/vendor/bootstrap/css/bootstrap.min.css"/>
-    <asset:stylesheet href="flatui/dist/css/flat-ui.css"/>
-    <asset:stylesheet href="flatui/dist/img/favicon.ico"/>
+    <asset:stylesheet href="/bootstrap/css/bootstrap.min.css"/>
 
 
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
-    <!--[if lt IE 9]>
-    <asset:javascript src="flatui/dist/js/vendor/html5shiv.js"/>
-    <asset:javascript src="flatui/dist/js/vendor/respond.min.js"/>
-    <![endif]-->
+
 
     <g:layoutHead/>
 </head>
@@ -31,7 +25,7 @@ body {
 }
 </style>
 
-<div class="navbar navbar-inverse navbar-embossed navbar-fixed-top" role="navigation">
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -49,16 +43,17 @@ body {
                 <li><a href="/application">Applications</a></li>
                 <li><a href="/messages">Messages</a></li>
                 <li><a href="/favorite">Favorites</a></li>
-                <li><a href="/resumes">Resumes</a></li>
+                <li><a href="/resume">Resumes</a></li>
 
             </ul>
 
             <sec:ifLoggedIn>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="${baseInfo?.img}"
-                                                                                        class="img-circle"
-                                                                                        style="height: 32px"> <b
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img
+                                src="${baseInfo ? baseInfo.img : '/assets/not_uploaded.jpg'}"
+                                class="img-circle"
+                                style="height: 20px"> <b
                                 class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
@@ -70,28 +65,46 @@ body {
             </sec:ifLoggedIn>
             <sec:ifNotLoggedIn>
                 <ul class="nav nav-pills navbar-right">
-                <li>
-                    <a href="/register">SIGN UP</a>
-                </li>
-                <li>
-                    <a href="/login">SIGN IN</a>
-                </li>
+                    <li>
+                        <button type="button" class="btn btn-danger navbar-btn" onclick="toRegister()">Sign UP</button>
+                    </li>
+                    <li>
+                        <button type="button" class="btn btn-warning navbar-btn" onclick="toLogin()">Sign in</button>
+                    </li>
                 </ul>
             </sec:ifNotLoggedIn>
-
 
         </div><!--/.nav-collapse -->
     </div>
 </div>
 
 <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <ol class="breadcrumb">
+                <li><a href="/">Home</a></li>
+                <li><a href="/resume">Resumes</a></li>
+                %{--<li class="active"><span>Data</span></li>--}%
+            </ol>
+        </div>
+    </div>
     <g:layoutBody/>
 
 </div>
-
+<script type="text/javascript">
+    function toLogin() {
+        window.location.href = '/login'
+    }
+    function toLogout() {
+        window.location.href = '/logout'
+    }
+    function toRegister() {
+        window.location.href = '/register/register'
+    }
+</script>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<asset:javascript src="flatui/dist/js/vendor/jquery.min.js"/>
-<asset:javascript src="flatui/dist/js/flat-ui.min.js"/>
-<asset:javascript src="flatui/dist/js/application.js"/>
+<asset:javascript src="/bootstrap/js/jquery.min.js"/>
+<asset:javascript src="/bootstrap/js/bootstrap.min.js"/>
+<asset:javascript src="/bootstrap/js/scripts.js"/>
 </body>
 </html>

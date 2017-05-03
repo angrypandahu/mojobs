@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-    <meta name="layout" content="flatui"/>
+    <meta name="layout" content="bootflat"/>
     <title>Mojobs</title>
 
     <asset:link rel="icon" href="favicon.ico" type="image/x-ico"/>

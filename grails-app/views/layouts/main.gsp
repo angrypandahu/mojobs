@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     %{--<meta http-equiv="X-UA-Compatible" content="IE=edge"/>--}%
     <title>
-        <g:layoutTitle default="IColor Report"/>
+        <g:layoutTitle default="Mojobs"/>
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
@@ -41,7 +41,7 @@
             <a class="navbar-brand" href="/#">
                 <i class="fa grails-icon">
                     <asset:image src="grails-cupsonly-logo-white.svg" class="icolor_logo"/>
-                </i>Api
+                </i>Mojobs
             </a>
 
 

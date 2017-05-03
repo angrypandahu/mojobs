@@ -1,6 +1,6 @@
 package com.domain.auth
 
-import com.domain.biz.resume.Resume
+import com.domain.biz.Resume
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
 
@@ -20,7 +20,6 @@ class User implements Serializable {
     boolean accountLocked
     boolean passwordExpired
     static hasMany = [resumes: Resume]
-    Resume profile
 
     Set<Role> getAuthorities() {
         UserRole.findAllByUser(this)*.role
@@ -46,8 +45,6 @@ class User implements Serializable {
         password blank: false, password: true
         username blank: false, unique: true
         email blank: false, unique: true, email: true
-        resumes nullable: true
-        profile nullable: true
     }
 
     static mapping = {

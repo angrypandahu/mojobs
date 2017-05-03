@@ -22,7 +22,7 @@ class UserController {
         }
         User user = getAuthenticatedUser() as User
         def baseInfo = new BaseInfo()
-        if (!user.profile) {
+        if (!user.resumes) {
             baseInfo.setImg("/assets/not_uploaded.jpg")
         }
         render view: view, model: [user: user, baseInfo: baseInfo]

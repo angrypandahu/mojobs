@@ -1,4 +1,4 @@
-package com.domain.biz.resume
+package com.domain.biz
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
