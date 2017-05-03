@@ -1,4 +1,4 @@
-package com.domain.biz.profile
+package com.domain.biz.resume
 
 import com.domain.common.Address
 import com.domain.common.Image

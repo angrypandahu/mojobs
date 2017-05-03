@@ -9,8 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
     <!-- Loading Bootstrap -->
-    <asset:stylesheet href="/bootstrap/css/simplex/bootstrap.min.css"/>
-
+    <asset:stylesheet href="/bootstrap/css/bootstrap.min.css"/>
+    <asset:javascript src="/bootstrap/js/jquery.min.js"/>
+    <asset:javascript src="/bootstrap/js/bootstrap.min.js"/>
+    <asset:javascript src="/bootstrap/js/scripts.js"/>
 
 
 
@@ -69,8 +71,6 @@ body {
 </div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<asset:javascript src="/bootstrap/js/jquery.min.js"/>
-<asset:javascript src="/bootstrap/js/bootstrap.min.js"/>
-<asset:javascript src="/bootstrap/js/scripts.js"/>
+
 </body>
 </html>

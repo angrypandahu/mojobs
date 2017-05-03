@@ -1,8 +1,8 @@
 package com.domain.biz
 
 import com.domain.auth.User
-import com.domain.biz.profile.PersonalInfo
-import com.domain.biz.profile.Privacy
+import com.domain.biz.resume.PersonalInfo
+import com.domain.biz.resume.Privacy
 
 class Resume {
     static belongsTo = [user: User]

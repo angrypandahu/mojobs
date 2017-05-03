@@ -1,5 +1,7 @@
 package com.domain.biz.profile
 
+import com.domain.biz.resume.Privacy
+import com.domain.biz.resume.PrivacyController
 import grails.test.mixin.*
 import spock.lang.*
 

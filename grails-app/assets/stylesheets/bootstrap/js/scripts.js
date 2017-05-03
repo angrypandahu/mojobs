@@ -15,9 +15,17 @@ $(function () {
         var currentHref = window.location.href;
         var endWith = currentHref.substring(currentHref.lastIndexOf("/"));
         if (href == endWith) {
-            $(this).parent().addClass('active')
+            $(this).parent().addClass('active');
             $('#oneResumeDetail').html($(this).html())
         }
 
-    })
+    });
+    $('#mainNavbar').find('a').each(function () {
+        var href = $(this).attr('href');
+        var currentHref = window.location.href;
+        var endWith = currentHref.substring(currentHref.lastIndexOf("/"));
+        if (href == endWith) {
+            $(this).parent().addClass('active');
+        }
+    });
 });

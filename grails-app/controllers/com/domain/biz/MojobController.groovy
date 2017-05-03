@@ -1,13 +1,10 @@
 package com.domain.biz
 
-import com.domain.common.Address
 import com.domain.common.AddressConstants
 import com.domain.common.JobSearchData
-import com.mojobs.Category
-import com.mojobs.Style
+import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*
-import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class MojobController {

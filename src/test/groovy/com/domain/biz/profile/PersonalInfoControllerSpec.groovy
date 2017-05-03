@@ -1,5 +1,7 @@
 package com.domain.biz.profile
 
+import com.domain.biz.resume.PersonalInfo
+import com.domain.biz.resume.PersonalInfoController
 import grails.test.mixin.*
 import spock.lang.*
 

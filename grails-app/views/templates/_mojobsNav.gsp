@@ -8,10 +8,9 @@
         </div>
 
         <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li class="${request.requestURI == '/job' ? 'active' : ''}"><a href="/">Jobs</a></li>
-                <li class="${request.requestURI.startsWith('/company') ? 'active' : ''}"><a href="/user">Companies</a>
-                </li>
+            <ul class="nav navbar-nav" id="mainNavbar">
+                <li><a href="/mojob">Jobs</a></li>
+                <li><a href="/company">Companies</a></li>
                 <li><a href="/invitation">Invitations</a></li>
                 <li><a href="/application">Applications</a></li>
                 <li><a href="/messages">Messages</a></li>

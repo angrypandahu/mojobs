@@ -1,4 +1,4 @@
-package com.domain.biz.profile
+package com.domain.biz.resume
 
 class Privacy {
     List<String> hideForEmails

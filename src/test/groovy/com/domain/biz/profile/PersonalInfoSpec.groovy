@@ -1,5 +1,6 @@
 package com.domain.biz.profile
 
+import com.domain.biz.resume.PersonalInfo
 import grails.test.mixin.TestFor
 import spock.lang.Specification
 

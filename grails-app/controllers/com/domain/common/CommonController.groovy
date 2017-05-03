@@ -31,3 +31,9 @@ class JobSearchData {
 class BaseInfo {
     String img
 }
+
+class BreadCrumb {
+    String name
+    String url
+    String linkClass
+}

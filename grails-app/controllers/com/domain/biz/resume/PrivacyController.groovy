@@ -1,4 +1,7 @@
-package com.domain.biz.profile
+package com.domain.biz.resume
+
+import com.domain.biz.resume.Privacy
+import org.springframework.web.bind.annotation.RequestMapping
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -10,7 +13,7 @@ class PrivacyController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Privacy.list(params), model:[privacyCount: Privacy.count()]
+        respond Privacy.list(params), model: [privacyCount: Privacy.count()]
     }
 
     def show(Privacy privacy) {
@@ -31,11 +34,11 @@ class PrivacyController {
 
         if (privacy.hasErrors()) {
             transactionStatus.setRollbackOnly()
-            respond privacy.errors, view:'create'
+            respond privacy.errors, view: 'create'
             return
         }
 
-        privacy.save flush:true
+        privacy.save flush: true
 
         request.withFormat {
             form multipartForm {
@@ -60,18 +63,18 @@ class PrivacyController {
 
         if (privacy.hasErrors()) {
             transactionStatus.setRollbackOnly()
-            respond privacy.errors, view:'edit'
+            respond privacy.errors, view: 'edit'
             return
         }
 
-        privacy.save flush:true
+        privacy.save flush: true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'privacy.label', default: 'Privacy'), privacy.id])
                 redirect privacy
             }
-            '*'{ respond privacy, [status: OK] }
+            '*' { respond privacy, [status: OK] }
         }
     }
 
@@ -84,14 +87,14 @@ class PrivacyController {
             return
         }
 
-        privacy.delete flush:true
+        privacy.delete flush: true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'privacy.label', default: 'Privacy'), privacy.id])
-                redirect action:"index", method:"GET"
+                redirect action: "index", method: "GET"
             }
-            '*'{ render status: NO_CONTENT }
+            '*' { render status: NO_CONTENT }
         }
     }
 
@@ -101,7 +104,7 @@ class PrivacyController {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'privacy.label', default: 'Privacy'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*'{ render status: NOT_FOUND }
+            '*' { render status: NOT_FOUND }
         }
     }
 }
