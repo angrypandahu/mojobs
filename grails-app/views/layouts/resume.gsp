@@ -44,7 +44,6 @@ body {
                 <li><a href="/messages">Messages</a></li>
                 <li><a href="/favorite">Favorites</a></li>
                 <li><a href="/resume">Resumes</a></li>
-
             </ul>
 
             <sec:ifLoggedIn>
@@ -53,7 +52,7 @@ body {
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img
                                 src="${baseInfo ? baseInfo.img : '/assets/not_uploaded.jpg'}"
                                 class="img-circle"
-                                style="height: 20px"> <b
+                                style="height: 20px"><sec:loggedInUserInfo field="username"/> <b
                                 class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
