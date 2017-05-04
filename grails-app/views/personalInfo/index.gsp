@@ -15,56 +15,67 @@
     </div>
 
     <div class="panel-body">
-        <form role="form">
+        <g:uploadForm name="uploadFeaturedImage" action="uploadFeaturedImage">
+            <g:hiddenField name="id" value="${this.photo?.id}" />
+            <g:hiddenField name="version" value="${this.photo?.version}" />
+            <input type="file" name="featuredImageFile" />
+            <fieldset class="buttons">
+                <input class="save" type="submit" value="${message(code: 'restaurant.featuredImage.upload.label', default: 'Upload')}" />
+            </fieldset>
+        </g:uploadForm>
+        <g:uploadForm name="personalInfo" role="form" action="uploadImg" method="POST">
+            <g:hiddenField name="id" value="${personalInfo?.id}"/>
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-4">
-                        <img alt="Bootstrap Image Preview"
-                             src="${baseInfo ? baseInfo.img : '/assets/not_uploaded.jpg'}"/>
+                        <g:img uri="${baseInfo ? baseInfo.img : '/assets/not_uploaded.jpg'}"/>
+
                     </div>
 
                     <div class="col-md-8">
                         <p class="help-block">
                             Profile photo will be auto saved after upload
                         </p>
-                        <input type="file" id="exampleInputFile"/>
+                        <input type="file" id="exampleInputFile" name="photo"/>
                     </div>
 
                 </div>
             </div>
 
             <div class="form-group">
-
-                <label class="string optional required" for="talent_first_name">First Name</label>
-                <input type="text" name="firstName" class="form-control" id="talent_first_name" required/>
+                <label class="string optional required" for="firstNameId">First Name</label>
+                <input type="text" name="firstName" class="form-control" id="firstNameId"
+                       value="${personalInfo?.firstName}" required/>
             </div>
 
             <div class="form-group">
-
-                <label for="exampleInputEmail1">
-                    Email address
-                </label>
-                <input type="email" class="form-control" id="exampleInputEmail1"/>
-            </div>
-
-            <div class="form-group">
-
-                <label for="exampleInputPassword1">
-                    Password
-                </label>
-                <input type="password" class="form-control" id="exampleInputPassword1"/>
+                <label class="string optional required" for="lastNameId">Last Name</label>
+                <input type="text" name="lastName" class="form-control" id="lastNameId"
+                       value="${personalInfo?.lastName}" required/>
             </div>
 
             <div class="checkbox">
+                <input type="radio" name="gender" id="maleId" ${personalInfo?.gender ? 'checked' : ''}
+                       value="true"/> <label
+                    for="maleId">Male</label>
+                <input type="radio" name="gender" id="femaleId" ${personalInfo?.gender ? '' : 'checked'}
+                       value="false"/> <label
+                    for="femaleId">Female</label>
 
-                <label>
-                    <input type="checkbox"/> Check me out
-                </label>
             </div>
+
+            <div class="form-group">
+
+                <label for="emailId">
+                    Email address
+                </label>
+                <input type="email" id="emailId" value="${personalInfo?.email}" class="form-control" required>
+            </div>
+
             <button type="submit" class="btn btn-default">
                 Submit
             </button>
-        </form>
+        </g:uploadForm>
     </div>
 
     <div class="panel-footer">

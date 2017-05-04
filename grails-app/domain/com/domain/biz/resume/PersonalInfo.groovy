@@ -9,6 +9,7 @@ class PersonalInfo {
     String lastName
     String firstName
     Boolean gender
+    String email
     Address presentLocus
     static constraints = {
         photo nullable: true
