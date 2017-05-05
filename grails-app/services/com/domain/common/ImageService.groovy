@@ -9,13 +9,8 @@ class ImageService {
 
     }
 
-    Image uploadFeatureImage(FeaturedImageCommand cmd) {
-        byte[] bytes = cmd.featuredImageFile.bytes
-        String contentType = cmd.featuredImageFile.contentType
-        updateFeatureImage(cmd.id, cmd.version, bytes, contentType)
-    }
 
-    Image updateFeatureImage(Long imageId, Integer version, byte[] bytes, String contentType) {
+    Image updateFeatureImage(Long imageId, byte[] bytes, String contentType) {
         Image image
         if (!imageId) {
             image = new Image()
@@ -25,7 +20,6 @@ class ImageService {
         if (!image) {
             return null
         }
-        image.version = version
         image.featuredImageBytes = bytes
         image.featuredImageContentType = contentType
         image.save()

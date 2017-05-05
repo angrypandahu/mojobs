@@ -1,5 +1,7 @@
 package com.domain.biz
 
+import com.domain.auth.User
+
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
@@ -10,7 +12,22 @@ class ResumeController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Resume.list(params), model:[resumeCount: Resume.count()]
+        respond Resume.list(params), model: [resumeCount: Resume.count()]
+    }
+
+    def en() {
+        User user = getAuthenticatedUser() as User
+        Resume resume
+        def resumes = user.getResumes()
+        if (!resumes) {
+            resume = new Resume(user: user, isDefault: true)
+            resume.save(flush: true)
+        } else {
+            resume = resumes[0]
+        }
+//        chain(controller: 'personalInfo', action: 'en', model: [resume: resume])
+        redirect(controller: 'personalInfo', action: 'en', params: ['resume': resume.id])
+
     }
 
     def show(Resume resume) {
@@ -31,11 +48,11 @@ class ResumeController {
 
         if (resume.hasErrors()) {
             transactionStatus.setRollbackOnly()
-            respond resume.errors, view:'create'
+            respond resume.errors, view: 'create'
             return
         }
 
-        resume.save flush:true
+        resume.save flush: true
 
         request.withFormat {
             form multipartForm {
@@ -60,18 +77,18 @@ class ResumeController {
 
         if (resume.hasErrors()) {
             transactionStatus.setRollbackOnly()
-            respond resume.errors, view:'edit'
+            respond resume.errors, view: 'edit'
             return
         }
 
-        resume.save flush:true
+        resume.save flush: true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'resume.label', default: 'Resume'), resume.id])
                 redirect resume
             }
-            '*'{ respond resume, [status: OK] }
+            '*' { respond resume, [status: OK] }
         }
     }
 
@@ -84,14 +101,14 @@ class ResumeController {
             return
         }
 
-        resume.delete flush:true
+        resume.delete flush: true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'resume.label', default: 'Resume'), resume.id])
-                redirect action:"index", method:"GET"
+                redirect action: "index", method: "GET"
             }
-            '*'{ render status: NO_CONTENT }
+            '*' { render status: NO_CONTENT }
         }
     }
 
@@ -101,7 +118,7 @@ class ResumeController {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'resume.label', default: 'Resume'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*'{ render status: NOT_FOUND }
+            '*' { render status: NOT_FOUND }
         }
     }
 }

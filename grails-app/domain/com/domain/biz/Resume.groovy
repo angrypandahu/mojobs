@@ -4,10 +4,18 @@ import com.domain.auth.User
 import com.domain.biz.resume.PersonalInfo
 import com.domain.biz.resume.Privacy
 
-class Resume {
+class Resume implements Comparable {
+    private static final long serialVersionUID = 1
+
     static belongsTo = [user: User]
     PersonalInfo personalInfo
     Privacy privacy
+    Boolean isDefault
     static constraints = {
+    }
+
+    @Override
+    int compareTo(Object o) {
+        return isDefault ? 1 : 0
     }
 }

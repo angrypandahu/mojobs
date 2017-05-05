@@ -8,4 +8,5 @@ class ResumeService {
     def serviceMethod() {
 
     }
+
 }
