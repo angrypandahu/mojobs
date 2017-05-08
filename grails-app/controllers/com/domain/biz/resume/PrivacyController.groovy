@@ -1,28 +1,13 @@
 package com.domain.biz.resume
 
-import com.domain.biz.resume.Privacy
-import org.springframework.web.bind.annotation.RequestMapping
+import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*
-import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class PrivacyController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Privacy.list(params), model: [privacyCount: Privacy.count()]
-    }
-
-    def show(Privacy privacy) {
-        respond privacy
-    }
-
-    def create() {
-        respond new Privacy(params)
-    }
 
     @Transactional
     def save(Privacy privacy) {
@@ -49,7 +34,11 @@ class PrivacyController {
         }
     }
 
-    def edit(Privacy privacy) {
+    def edit() {
+        def privacy = Privacy.get(params.id)
+        if (!privacy) {
+            privacy = new PersonalInfo(params)
+        }
         respond privacy
     }
 

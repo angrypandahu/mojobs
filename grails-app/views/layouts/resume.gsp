@@ -28,6 +28,13 @@ body {
 </style>
 
 <g:render template="/templates/mojobsNav"/>
+<g:if test="${flash.message}">
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                aria-hidden="true">&times;</span></button>
+        <strong>Success!</strong>${flash.message}
+    </div>
+</g:if>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -49,12 +56,12 @@ body {
             </div>
             <ul id="resumeDetail" class="nav nav-pills nav-stacked">
                 <li>
-                    <a href="/personalInfo">Personal Info *</a></li>
+                    <a href="/resume/personalInfo">Personal Info *</a></li>
                 <li><a href="/skill">Skills</a></li>
                 <li><a href="/preferences">Preferences</a></li>
                 <li><a href="#">Skills</a></li>
                 <li><a href="#">Skills</a></li>
-                <li><a href="/privacy">Privacy Protection</a></li>
+                <li><a href="/resume/privacy">Privacy Protection</a></li>
 
             </ul>
             <button type="button" class="btn btn-sm active btn-block btn-info" style="margin-top: 50px">

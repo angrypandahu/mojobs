@@ -10,11 +10,16 @@ class ImageController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Image.list(params), model:[imageCount: Image.count()]
+        respond Image.list(params), model: [imageCount: Image.count()]
     }
 
     def show(Image image) {
-        respond image
+        if (image == null || image.featuredImageBytes == null) {
+            transactionStatus.setRollbackOnly()
+            notFound()
+            return
+        }
+        render file: image.featuredImageBytes, contentType: image.featuredImageContentType
     }
 
     def create() {
@@ -31,11 +36,11 @@ class ImageController {
 
         if (image.hasErrors()) {
             transactionStatus.setRollbackOnly()
-            respond image.errors, view:'create'
+            respond image.errors, view: 'create'
             return
         }
 
-        image.save flush:true
+        image.save flush: true
 
         request.withFormat {
             form multipartForm {
@@ -60,18 +65,18 @@ class ImageController {
 
         if (image.hasErrors()) {
             transactionStatus.setRollbackOnly()
-            respond image.errors, view:'edit'
+            respond image.errors, view: 'edit'
             return
         }
 
-        image.save flush:true
+        image.save flush: true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'image.label', default: 'Image'), image.id])
                 redirect image
             }
-            '*'{ respond image, [status: OK] }
+            '*' { respond image, [status: OK] }
         }
     }
 
@@ -84,14 +89,14 @@ class ImageController {
             return
         }
 
-        image.delete flush:true
+        image.delete flush: true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'image.label', default: 'Image'), image.id])
-                redirect action:"index", method:"GET"
+                redirect action: "index", method: "GET"
             }
-            '*'{ render status: NO_CONTENT }
+            '*' { render status: NO_CONTENT }
         }
     }
 
@@ -101,7 +106,7 @@ class ImageController {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'image.label', default: 'Image'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*'{ render status: NOT_FOUND }
+            '*' { render status: NOT_FOUND }
         }
     }
 }

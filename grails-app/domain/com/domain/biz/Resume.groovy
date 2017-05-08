@@ -8,9 +8,8 @@ class Resume implements Comparable {
     private static final long serialVersionUID = 1
 
     static belongsTo = [user: User]
-    PersonalInfo personalInfo
-    Privacy privacy
     Boolean isDefault
+    static hasOne = [personalInfo: PersonalInfo, privacy: Privacy]
     static constraints = {
     }
 

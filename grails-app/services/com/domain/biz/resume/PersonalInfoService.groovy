@@ -2,6 +2,7 @@ package com.domain.biz.resume
 
 import com.domain.auth.User
 import grails.transaction.Transactional
+import org.springframework.web.multipart.MultipartFile
 
 @Transactional
 class PersonalInfoService {
@@ -11,6 +12,17 @@ class PersonalInfoService {
 
     }
 
+    PersonalInfo save(PersonalInfo personalInfo) {
+        personalInfo.save(flush: true)
+        personalInfo
+    }
+
+    PersonalInfo uploadAndSave(PersonalInfo personalInfo, MultipartFile multipartFile) {
+        def image = imageService.saveOrUpdate(personalInfo.getPhoto(), multipartFile)
+        personalInfo.setPhoto(image)
+        personalInfo.save(flush: true)
+        personalInfo
+    }
 
 
     PersonalInfo getByUser(User user) {

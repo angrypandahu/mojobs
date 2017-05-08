@@ -1,6 +1,7 @@
 package com.domain.common
 
 import grails.transaction.Transactional
+import org.springframework.web.multipart.MultipartFile
 
 @Transactional
 class ImageService {
@@ -9,6 +10,19 @@ class ImageService {
 
     }
 
+    Image create(MultipartFile multipartFile) {
+        return updateFeatureImage(null, multipartFile.bytes, multipartFile.contentType)
+    }
+
+    Image saveOrUpdate(Image image, MultipartFile multipartFile) {
+        if (!image) {
+            image = new Image()
+        }
+        image.featuredImageBytes = multipartFile.bytes
+        image.featuredImageContentType = multipartFile.contentType
+        image.save()
+        image
+    }
 
     Image updateFeatureImage(Long imageId, byte[] bytes, String contentType) {
         Image image

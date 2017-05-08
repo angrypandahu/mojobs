@@ -15,7 +15,7 @@
                 <li><a href="/application">Applications</a></li>
                 <li><a href="/messages">Messages</a></li>
                 <li><a href="/favorite">Favorites</a></li>
-                <li><a href="/resume/en">Resumes</a></li>
+                <li><a href="/resume/personalInfo">Resumes</a></li>
             </ul>
 
             <sec:ifLoggedIn>

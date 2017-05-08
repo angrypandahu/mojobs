@@ -1,58 +1,22 @@
 package com.domain.biz.resume
 
-import com.domain.biz.Resume
+import grails.transaction.Transactional
+import org.springframework.web.multipart.MultipartFile
 
 import static org.springframework.http.HttpStatus.*
-import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class PersonalInfoController {
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    def personalInfoService
+    static allowedMethods = [save: "POST", update: "POST", delete: "DELETE"]
 
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond PersonalInfo.list(params), model: [personalInfoCount: PersonalInfo.count()]
-    }
 
-    def show(PersonalInfo personalInfo) {
-        respond personalInfo
-    }
-
-    def en() {
-        println(params)
-    }
-
-    def create() {
-        respond new PersonalInfo(params)
-    }
-
-    @Transactional
-    def save(PersonalInfo personalInfo) {
-        if (personalInfo == null) {
-            transactionStatus.setRollbackOnly()
-            notFound()
-            return
+    def edit() {
+        def personalInfo = PersonalInfo.get(params.id)
+        if (!personalInfo) {
+            personalInfo = new PersonalInfo(params)
         }
-
-        if (personalInfo.hasErrors()) {
-            transactionStatus.setRollbackOnly()
-            respond personalInfo.errors, view: 'create'
-            return
-        }
-
-        personalInfo.save flush: true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'personalInfo.label', default: 'PersonalInfo'), personalInfo.id])
-                redirect personalInfo
-            }
-            '*' { respond personalInfo, [status: CREATED] }
-        }
-    }
-
-    def edit(PersonalInfo personalInfo) {
         respond personalInfo
     }
 
@@ -69,13 +33,18 @@ class PersonalInfoController {
             respond personalInfo.errors, view: 'edit'
             return
         }
+        MultipartFile f = request.getFile('myFile')
+        if (!f.isEmpty()) {
+            personalInfoService.uploadAndSave(personalInfo, f)
+        } else {
+            personalInfoService.save(personalInfo)
+        }
 
-        personalInfo.save flush: true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'personalInfo.label', default: 'PersonalInfo'), personalInfo.id])
-                redirect personalInfo
+                redirect(controller: 'personalInfo', action: 'edit', id: personalInfo.id)
             }
             '*' { respond personalInfo, [status: OK] }
         }

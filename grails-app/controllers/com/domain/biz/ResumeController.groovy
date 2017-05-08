@@ -1,13 +1,13 @@
 package com.domain.biz
 
-import com.domain.auth.User
+import com.domain.biz.resume.Privacy
+import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*
-import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class ResumeController {
-
+    def resumeService
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
@@ -15,18 +15,15 @@ class ResumeController {
         respond Resume.list(params), model: [resumeCount: Resume.count()]
     }
 
-    def en() {
-        User user = getAuthenticatedUser() as User
-        Resume resume
-        def resumes = user.getResumes()
-        if (!resumes) {
-            resume = new Resume(user: user, isDefault: true)
-            resume.save(flush: true)
-        } else {
-            resume = resumes[0]
-        }
-//        chain(controller: 'personalInfo', action: 'en', model: [resume: resume])
-        redirect(controller: 'personalInfo', action: 'en', params: ['resume': resume.id])
+    def personalInfo() {
+        Resume resume = resumeService.getCurrentUserResume()
+        redirect(controller: 'personalInfo', action: 'edit', id: resume.personalInfo?.id, params: ['resume.id': resume.id])
+    }
+
+    def privacy() {
+        Resume resume = resumeService.getCurrentUserResume()
+        redirect(controller: 'privacy', action: 'edit', id: resume.privacy?.id, params: ['resume.id': resume.id])
+
 
     }
 
