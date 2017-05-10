@@ -21,11 +21,7 @@ class UserController {
             view = 'employer'
         }
         User user = getAuthenticatedUser() as User
-        def baseInfo = new BaseInfo()
-        if (user.resumes.size() == 0) {
-            baseInfo.setImg("/assets/not_uploaded.jpg")
-        }
-        render view: view, model: [user: user, baseInfo: baseInfo]
+        render view: view, model: [user: user]
     }
 
     def index(Integer max) {

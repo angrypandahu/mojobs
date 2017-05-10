@@ -1,4 +1,4 @@
-<div class="navbar  navbar-fixed-top" role="navigation">
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -22,11 +22,15 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img
-                                src="${baseInfo ? baseInfo.img : '/assets/not_uploaded.jpg'}"
+                                src="${session.baseInfo.img}"
                                 class="img-circle"
                                 style="height: 20px"><sec:loggedInUserInfo field="username"/> <b
-                                class="caret"></b></a>
+                                class="caret"></b>
+                        </a>
                         <ul class="dropdown-menu">
+                            <li>
+                                <a href="/user/home">SETTING</a>
+                            </li>
                             <li>
                                 <a href="/logout">LOG OUT</a>
                             </li>

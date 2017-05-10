@@ -37,9 +37,10 @@ class PrivacyController {
     def edit() {
         def privacy = Privacy.get(params.id)
         if (!privacy) {
-            privacy = new PersonalInfo(params)
+            privacy = new Privacy(params)
         }
-        respond privacy
+        render(view: 'edit', model: [privacy: privacy])
+//        respond privacy
     }
 
     @Transactional

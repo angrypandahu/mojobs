@@ -29,10 +29,8 @@ body {
 
 <g:render template="/templates/mojobsNav"/>
 <g:if test="${flash.message}">
-    <div class="alert alert-success alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
-                aria-hidden="true">&times;</span></button>
-        <strong>Success!</strong>${flash.message}
+    <div class="alert alert-success alert-dismissible" role="alert" >
+        ${flash.message}
     </div>
 </g:if>
 <div class="container">
@@ -59,8 +57,7 @@ body {
                     <a href="/resume/personalInfo">Personal Info *</a></li>
                 <li><a href="/skill">Skills</a></li>
                 <li><a href="/preferences">Preferences</a></li>
-                <li><a href="#">Skills</a></li>
-                <li><a href="#">Skills</a></li>
+                <li><a href="/resume/workExperience">Work</a></li>
                 <li><a href="/resume/privacy">Privacy Protection</a></li>
 
             </ul>

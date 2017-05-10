@@ -37,14 +37,14 @@
                         </g:if>
                         <g:else>
                             <img src="<g:createLink controller="image" action="show" id="${personalInfo.photo.id}"/>"
-                                 width="200"/>
+                                 width="150"/>
                         </g:else>
 
                     </div>
 
                     <div class="col-md-8">
                         <p class="help-block">
-                            Profile photo will be auto saved after upload
+                            %{--Profile photo will be auto saved after upload--}%
                         </p>
                         <input type="file" id="exampleInputFile" name="myFile"
                                accept="image/jpg,image/jpeg,image/png,image/gif,image/bmp"/>

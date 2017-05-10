@@ -45,6 +45,7 @@ class BootStrap {
             Requestmap.findOrCreateWhere(configAttribute: 'ROLE_ADMIN', url: '/user/**').save(flush: true)
             Requestmap.findOrCreateWhere(configAttribute: 'IS_AUTHENTICATED_FULLY', url: '/personalinfo/**').save(flush: true)
             Requestmap.findOrCreateWhere(configAttribute: 'IS_AUTHENTICATED_FULLY', url: '/privacy/**').save(flush: true)
+            Requestmap.findOrCreateWhere(configAttribute: 'IS_AUTHENTICATED_FULLY', url: '/workExperience/**').save(flush: true)
             Requestmap.findOrCreateWhere(configAttribute: 'IS_AUTHENTICATED_FULLY', url: '/image/**').save(flush: true)
 
             springSecurityService.clearCachedRequestmaps()

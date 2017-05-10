@@ -19,7 +19,6 @@ class User implements Serializable {
     boolean accountExpired
     boolean accountLocked
     boolean passwordExpired
-    SortedSet<Resume> resumes
     static hasMany = [resumes: Resume]
 
     Set<Role> getAuthorities() {

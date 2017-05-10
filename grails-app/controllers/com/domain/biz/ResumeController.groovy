@@ -1,6 +1,5 @@
 package com.domain.biz
 
-import com.domain.biz.resume.Privacy
 import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*
@@ -23,7 +22,11 @@ class ResumeController {
     def privacy() {
         Resume resume = resumeService.getCurrentUserResume()
         redirect(controller: 'privacy', action: 'edit', id: resume.privacy?.id, params: ['resume.id': resume.id])
+    }
 
+    def workExperience() {
+        Resume resume = resumeService.getCurrentUserResume()
+        redirect(controller: 'workExperience', action: 'index', params: ['resume.id': resume.id])
 
     }
 

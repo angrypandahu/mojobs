@@ -64,6 +64,15 @@ grails.plugin.springsecurity.secureChannel.secureHeaderName = 'X-Forwarded-Proto
 grails.plugin.springsecurity.secureChannel.secureHeaderValue = 'http'
 grails.plugin.springsecurity.secureChannel.insecureHeaderName = 'X-Forwarded-Proto'
 grails.plugin.springsecurity.secureChannel.insecureHeaderValue = 'https'
+grails.plugin.springsecurity.useSecurityEventListener = true
 
 grails.resources.pattern = '/**'
+
+
+grails.databinding.dateFormats = [
+        'dd-MM-yyyy', 'yyyy-MM-dd', 'yyyy-MM-dd HH:mm:ss.S'
+]
+
+grails.controllers.upload.maxFileSize = 5 * 1024 * 1024
+grails.controllers.upload.maxRequestSize = 5 * 1024 * 1024
 
