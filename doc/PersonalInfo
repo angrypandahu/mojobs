@@ -1,0 +1,29 @@
+*First name Last name (text)
+*Email (text); would you like to receive new job offers' introduction? (Y/N)
+Skype (text)
+Mobile (country code: pull down menu)(the rest number: text)
+Nationality (pull-down menu)
+*Gender (F/M)
+*Date of Birth (calendar)
+photo (upload)
+*Current Location (pull-down menu)
+*Expected Location (pull-down menu)
+Current Package,
+Base Salary: currency XXX/Annual; if hide (Y/N) 
+Benefit
+Expected Package,(text); if negotiable,(Y/N); if hide (Y/N)
+*Partner (Y/N)
+*Do you have kids (Y/N)
+choose yes -->  Kids' Name (First Name  Last Name)   Age   
++ More
+ if need special education (Y/N); 建议不要怕被认为是歧视
+----------------------------
+*Working Experience 
+from year to year   company name     position
++ more
+*Education Background
+from year to year   school name     degree
+*Other Progame
+*Certificate
+----------------------------
+or Linkedin Website profile link??
